@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --background: white;
+    --foreground: black;
+  }
+
+  .dark {
+    --background: black;
+    --foreground: white;
+  }
+
+  * {
+    @apply outline-none;
+  }
+
+  body {
+    @apply dark:dark select-text bg-background text-foreground;
+  }
+}

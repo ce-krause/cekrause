@@ -1,5 +1,7 @@
+import { ThemeSelect } from '@/components/select/theme'
 import { initializeInternationalization } from '@/internationalization'
 import { InternationalizationProvider } from '@/providers/internationalization'
+import { ThemeProvider } from '@/providers/theme'
 import type { Metadata } from 'next'
 import { ReactNode } from 'react'
 import './index.css'
@@ -21,7 +23,14 @@ const RootLayout = async ({ children }: RootLayoutProperties) => {
   return (
     <html lang={context.language}>
       <body>
-        <InternationalizationProvider {...context}>{children}</InternationalizationProvider>
+        <InternationalizationProvider {...context}>
+          <ThemeProvider>
+            <div className='absolute right-4 top-4'>
+              <ThemeSelect />
+            </div>
+            {children}
+          </ThemeProvider>
+        </InternationalizationProvider>
       </body>
     </html>
   )

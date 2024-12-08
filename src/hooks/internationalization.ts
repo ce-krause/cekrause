@@ -6,7 +6,7 @@ import { useContext } from 'react'
 export const useInternationalization = (): InternationalizationState => {
   const context = useContext(InternationalizationContext)
 
-  if (!context) throw new Error('useInternationalization should be used within InternationalizationProvider')
+  if (!context) throw new Error('useInternationalization must be used within InternationalizationProvider')
 
   return context
 }
