@@ -32,8 +32,8 @@ export const ThemeProvider = ({ ...properties }: ThemeProviderProperties) => {
 
   return (
     <ThemeContext.Provider
-      value={{ theme, setTheme }}
       {...properties}
+      value={{ theme, setTheme }}
     />
   )
 }

@@ -28,8 +28,8 @@ export const RootSelect = <T extends string>({ options, onChange, ...properties 
     >
       {options.map(({ children, ...properties }) => (
         <option
-          key={properties.value}
           {...properties}
+          key={properties.value}
         >
           {children[locale]}
         </option>

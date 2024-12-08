@@ -1,7 +1,12 @@
+import createMdx from '@next/mdx'
 import createNextIntlPlugin from 'next-intl/plugin'
 
+const mdx = createMdx()
 const internationalization = createNextIntlPlugin('./src/intl.ts')
 
-export default internationalization({
-  reactStrictMode: false
-})
+export default mdx(
+  internationalization({
+    pageExtensions: ['tsx', 'mdx'],
+    reactStrictMode: false
+  })
+)

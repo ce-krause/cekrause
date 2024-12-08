@@ -14,6 +14,7 @@ export const AnimatedContainer = ({ as = 'div', ...properties }: AnimatedContain
 
   return (
     <Container
+      {...properties}
       initial={{
         y: 5,
         opacity: 0
@@ -25,7 +26,6 @@ export const AnimatedContainer = ({ as = 'div', ...properties }: AnimatedContain
       transition={{
         duration: 0.1
       }}
-      {...properties}
     />
   )
 }

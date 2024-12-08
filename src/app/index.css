@@ -4,12 +4,14 @@
 
 @layer base {
   :root {
+    --light-background: rgb(229 229 229);
     --medium-background: rgb(115 115 115);
     --background: rgb(250 250 250);
     --foreground: rgb(23 23 23);
   }
 
   .dark {
+    --light-background: rgb(64 64 64);
     --background: rgb(23 23 23);
     --foreground: rgb(250 250 250);
   }
@@ -21,10 +23,26 @@
   body {
     @apply dark:dark select-text bg-background text-foreground selection:bg-foreground selection:text-background;
   }
+
+  h1 {
+    @apply font-medium;
+  }
+
+  ul {
+    @apply list-inside list-disc;
+  }
+
+  a {
+    @apply link;
+  }
+
+  hr {
+    @apply border-light-background;
+  }
 }
 
 @layer components {
   .link {
-    @apply underline-offset-4 hover:underline focus-visible:underline;
+    @apply text-blue-500 underline-offset-4 hover:underline focus-visible:underline;
   }
 }
