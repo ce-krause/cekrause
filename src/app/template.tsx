@@ -1,7 +1,7 @@
 'use client'
 
 import { AnimatedContainer } from '@/components/animated-container'
-import { useInternationalization } from '@/hooks/internationalization'
+import { useLocale } from '@/hooks/intl'
 import { NAVIGATION_BAR_LINKS, PATHNAMES } from '@/utils/constants'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -12,8 +12,7 @@ type TemplateProperties = {
 }
 
 const Template = ({ children }: TemplateProperties) => {
-  const { language } = useInternationalization()
-
+  const locale = useLocale()
   const pathname = usePathname()
   const includes = useMemo(() => PATHNAMES.includes(pathname), [pathname])
 
@@ -33,7 +32,7 @@ const Template = ({ children }: TemplateProperties) => {
               className='link text-sm'
               {...properties}
             >
-              {children[language]}
+              {children[locale]}
             </Link>
           ))}
         </nav>

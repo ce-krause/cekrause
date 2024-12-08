@@ -1,6 +1,6 @@
 'use client'
 
-import { useInternationalization } from '@/hooks/internationalization'
+import { useLocale } from '@/hooks/intl'
 import { SelectOption } from '@/utils/types'
 import { ChangeEvent, useCallback } from 'react'
 
@@ -11,7 +11,7 @@ type RootSelectProperties<T extends string> = {
 }
 
 export const RootSelect = <T extends string>({ options, onChange, ...properties }: RootSelectProperties<T>) => {
-  const { language } = useInternationalization()
+  const locale = useLocale()
 
   const handleChange = useCallback(
     (event: ChangeEvent<HTMLSelectElement>) => {
@@ -31,7 +31,7 @@ export const RootSelect = <T extends string>({ options, onChange, ...properties 
           key={properties.value}
           {...properties}
         >
-          {children[language]}
+          {children[locale]}
         </option>
       ))}
     </select>

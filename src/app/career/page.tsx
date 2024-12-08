@@ -1,11 +1,11 @@
-import { getInternationalization } from '@/internationalization'
 import { Metadata } from 'next'
+import { getTranslations } from 'next-intl/server'
 
-export const generateMetadata = (): Metadata => {
-  const { dictionary } = getInternationalization()
+export const generateMetadata = async (): Promise<Metadata> => {
+  const translate = await getTranslations('page-titles')
 
   return {
-    title: dictionary['page-titles'].career
+    title: translate('career')
   }
 }
 

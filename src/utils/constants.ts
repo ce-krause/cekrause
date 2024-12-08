@@ -1,9 +1,9 @@
-import { Language, SelectOption, TranslatedString } from './types'
+import { Locale, LocalizedString, SelectOption } from './types'
 
 export const PATHNAMES = ['/', '/career', '/contact', '/projects']
 
 export const NAVIGATION_BAR_LINKS: {
-  children: TranslatedString
+  children: LocalizedString
   href: string
 }[] = [
   {
@@ -29,7 +29,7 @@ export const NAVIGATION_BAR_LINKS: {
   }
 ]
 
-export const SELECT_LANGUAGE_OPTIONS: SelectOption<Language>[] = [
+export const LOCALE_SELECT_OPTIONS: SelectOption<Locale>[] = [
   {
     children: {
       en: 'English',
@@ -46,7 +46,7 @@ export const SELECT_LANGUAGE_OPTIONS: SelectOption<Language>[] = [
   }
 ]
 
-export const SELECT_THEME_OPTIONS: SelectOption[] = [
+export const THEME_SELECT_OPTIONS: SelectOption[] = [
   {
     children: {
       en: 'System',

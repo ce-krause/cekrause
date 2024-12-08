@@ -19,6 +19,6 @@
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "explorer.fileNesting.patterns": {
-    "tsconfig.json": "tailwind.config.ts, postcss.config.mjs, next.config.ts, next-env.d.ts, .eslintrc.json, .prettierrc.json, .gitignore"
+    "tsconfig.json": "tailwind.config.ts, postcss.config.mjs, next.config.ts, next-env.d.ts, .eslintrc.json, .prettierrc.json, .gitignore, tsconfig.tsbuildinfo"
   }
 }

@@ -1,5 +1,7 @@
-import type { NextConfig } from 'next'
+import createNextIntlPlugin from 'next-intl/plugin'
 
-export default {
+const internationalization = createNextIntlPlugin('./src/intl.ts')
+
+export default internationalization({
   reactStrictMode: false
-} satisfies NextConfig
+})

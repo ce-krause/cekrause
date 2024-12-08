@@ -1,10 +1,10 @@
 import { AnimatedContainer } from '@/components/animated-container'
-import { LanguageSelect } from '@/components/select/language'
+import { LocaleSelect } from '@/components/select/locale'
 import { ThemeSelect } from '@/components/select/theme'
-import { initializeInternationalization } from '@/internationalization'
-import { InternationalizationProvider } from '@/providers/internationalization'
 import { ThemeProvider } from '@/providers/theme'
 import type { Metadata } from 'next'
+import { NextIntlClientProvider } from 'next-intl'
+import { getLocale, getMessages } from 'next-intl/server'
 import { ReactNode } from 'react'
 import './index.css'
 
@@ -20,22 +20,26 @@ type RootLayoutProperties = {
 }
 
 const RootLayout = async ({ children }: RootLayoutProperties) => {
-  const context = await initializeInternationalization()
+  const locale = await getLocale()
+  const messages = await getMessages()
 
   return (
-    <html lang={context.language}>
+    <html lang={locale}>
       <body>
-        <InternationalizationProvider {...context}>
+        <NextIntlClientProvider
+          locale={locale}
+          messages={messages}
+        >
           <ThemeProvider>
             <AnimatedContainer>
               <div className='absolute right-4 top-4 grid grid-cols-2 gap-x-2'>
                 <ThemeSelect />
-                <LanguageSelect />
+                <LocaleSelect />
               </div>
               {children}
             </AnimatedContainer>
           </ThemeProvider>
-        </InternationalizationProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   )

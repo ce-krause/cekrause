@@ -1,7 +1,7 @@
 'use client'
 
 import { useTheme } from '@/hooks/theme'
-import { SELECT_THEME_OPTIONS } from '@/utils/constants'
+import { THEME_SELECT_OPTIONS } from '@/utils/constants'
 import { RootSelect } from './root'
 
 export const ThemeSelect = () => {
@@ -9,7 +9,7 @@ export const ThemeSelect = () => {
 
   return (
     <RootSelect
-      options={SELECT_THEME_OPTIONS}
+      options={THEME_SELECT_OPTIONS}
       value={theme}
       onChange={setTheme}
     />
