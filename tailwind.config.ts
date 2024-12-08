@@ -5,6 +5,7 @@ export default {
   theme: {
     extend: {
       colors: {
+        'medium-background': 'var(--medium-background)',
         background: 'var(--background)',
         foreground: 'var(--foreground)'
       }

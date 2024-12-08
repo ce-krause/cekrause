@@ -4,13 +4,14 @@
 
 @layer base {
   :root {
-    --background: white;
-    --foreground: black;
+    --medium-background: rgb(115 115 115);
+    --background: rgb(250 250 250);
+    --foreground: rgb(23 23 23);
   }
 
   .dark {
-    --background: black;
-    --foreground: white;
+    --background: rgb(23 23 23);
+    --foreground: rgb(250 250 250);
   }
 
   * {
@@ -18,6 +19,12 @@
   }
 
   body {
-    @apply dark:dark select-text bg-background text-foreground;
+    @apply dark:dark select-text bg-background text-foreground selection:bg-foreground selection:text-background;
+  }
+}
+
+@layer components {
+  .link {
+    @apply underline-offset-4 hover:underline focus-visible:underline;
   }
 }

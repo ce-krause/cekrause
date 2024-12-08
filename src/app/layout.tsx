@@ -1,3 +1,4 @@
+import { AnimatedContainer } from '@/components/animated-container'
 import { LanguageSelect } from '@/components/select/language'
 import { ThemeSelect } from '@/components/select/theme'
 import { initializeInternationalization } from '@/internationalization'
@@ -26,11 +27,13 @@ const RootLayout = async ({ children }: RootLayoutProperties) => {
       <body>
         <InternationalizationProvider {...context}>
           <ThemeProvider>
-            <div className='absolute right-4 top-4 grid grid-cols-2 gap-x-2'>
-              <ThemeSelect />
-              <LanguageSelect />
-            </div>
-            {children}
+            <AnimatedContainer>
+              <div className='absolute right-4 top-4 grid grid-cols-2 gap-x-2'>
+                <ThemeSelect />
+                <LanguageSelect />
+              </div>
+              {children}
+            </AnimatedContainer>
           </ThemeProvider>
         </InternationalizationProvider>
       </body>

@@ -1,4 +1,33 @@
-import { Language, SelectOption } from './types'
+import { Language, SelectOption, TranslatedString } from './types'
+
+export const PATHNAMES = ['/', '/career', '/contact', '/projects']
+
+export const NAVIGATION_BAR_LINKS: {
+  children: TranslatedString
+  href: string
+}[] = [
+  {
+    children: {
+      en: 'Home',
+      pt: 'Início'
+    },
+    href: '/'
+  },
+  {
+    children: {
+      en: 'Career',
+      pt: 'Carreira'
+    },
+    href: '/career'
+  },
+  {
+    children: {
+      en: 'Projects',
+      pt: 'Projetos'
+    },
+    href: '/projects'
+  }
+]
 
 export const SELECT_LANGUAGE_OPTIONS: SelectOption<Language>[] = [
   {
