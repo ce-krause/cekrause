@@ -5,9 +5,9 @@ import { languagesSchema } from './schemas'
 export type Language = z.infer<typeof languagesSchema>
 export type Dictionary = typeof dictionary
 
-export type SelectOption = {
+export type SelectOption<T extends string = string> = {
   children: {
     [language in Language]: string
   }
-  value: string
+  value: T
 }

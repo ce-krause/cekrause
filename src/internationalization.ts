@@ -1,4 +1,6 @@
-import { InternationalizationState } from '@/contexts/internationalization'
+'use server'
+
+import { InternationalizationStateProperties } from '@/contexts/internationalization'
 import { cookies } from 'next/headers'
 import { Dictionary, Language } from './utils/types'
 
@@ -7,7 +9,7 @@ const internationalization = () => {
   let _dictionary: Dictionary | null = null
 
   return {
-    getContext: (): InternationalizationState => {
+    getContext: (): InternationalizationStateProperties => {
       if (!_language) throw new Error('missing language from internationalization context')
       if (!_dictionary) throw new Error('missing dictionary from internationalization context')
 
@@ -16,19 +18,27 @@ const internationalization = () => {
         dictionary: _dictionary
       }
     },
-    setContext: ({ language, dictionary }: InternationalizationState) => {
+    setContext: ({ language, dictionary }: InternationalizationStateProperties) => {
       _language = language
       _dictionary = dictionary
+    },
+    updateLanguage: async (language: Language) => {
+      const store = await cookies()
+
+      store.set('LANGUAGE', language)
     }
   }
 }
 
-const context = internationalization()
+const { getContext, setContext, updateLanguage } = internationalization()
 
-export const initializeInternationalization = async (): Promise<InternationalizationState> => {
-  const store = await cookies()
-  const cookie = store.get('LANGUAGE')
-  const language = cookie?.value
+export const initializeInternationalization = async (language?: Language): Promise<InternationalizationStateProperties> => {
+  if (!language) {
+    const store = await cookies()
+    const cookie = store.get('LANGUAGE')
+
+    language = cookie?.value as Language
+  }
 
   if (!language) throw new Error('missing language cookie')
 
@@ -41,9 +51,10 @@ export const initializeInternationalization = async (): Promise<Internationaliza
     dictionary: file.default
   }
 
-  context.setContext(data)
+  setContext(data)
 
   return data
 }
 
-export const getInternationalization = context.getContext
+export const getInternationalization = getContext
+export const updateInternationalizationLanguage = updateLanguage

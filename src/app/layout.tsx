@@ -1,3 +1,4 @@
+import { LanguageSelect } from '@/components/select/language'
 import { ThemeSelect } from '@/components/select/theme'
 import { initializeInternationalization } from '@/internationalization'
 import { InternationalizationProvider } from '@/providers/internationalization'
@@ -25,8 +26,9 @@ const RootLayout = async ({ children }: RootLayoutProperties) => {
       <body>
         <InternationalizationProvider {...context}>
           <ThemeProvider>
-            <div className='absolute right-4 top-4'>
+            <div className='absolute right-4 top-4 grid grid-cols-2 gap-x-2'>
               <ThemeSelect />
+              <LanguageSelect />
             </div>
             {children}
           </ThemeProvider>

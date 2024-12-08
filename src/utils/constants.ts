@@ -1,4 +1,21 @@
-import { SelectOption } from './types'
+import { Language, SelectOption } from './types'
+
+export const SELECT_LANGUAGE_OPTIONS: SelectOption<Language>[] = [
+  {
+    children: {
+      en: 'English',
+      pt: 'Inglês'
+    },
+    value: 'en'
+  },
+  {
+    children: {
+      en: 'Portuguese',
+      pt: 'Português'
+    },
+    value: 'pt'
+  }
+]
 
 export const SELECT_THEME_OPTIONS: SelectOption[] = [
   {

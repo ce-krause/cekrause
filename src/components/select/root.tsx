@@ -1,21 +1,21 @@
-'ise client'
+'use client'
 
 import { useInternationalization } from '@/hooks/internationalization'
 import { SelectOption } from '@/utils/types'
 import { ChangeEvent, useCallback } from 'react'
 
-type RootSelectProperties = {
-  options: SelectOption[]
+type RootSelectProperties<T extends string> = {
+  options: SelectOption<T>[]
   value: string
-  onChange: (value: string) => void
+  onChange: (value: T) => void
 }
 
-export const RootSelect = ({ options, onChange, ...properties }: RootSelectProperties) => {
+export const RootSelect = <T extends string>({ options, onChange, ...properties }: RootSelectProperties<T>) => {
   const { language } = useInternationalization()
 
   const handleChange = useCallback(
     (event: ChangeEvent<HTMLSelectElement>) => {
-      onChange(event.target.value)
+      onChange(event.target.value as T)
     },
     [onChange]
   )
@@ -23,7 +23,7 @@ export const RootSelect = ({ options, onChange, ...properties }: RootSelectPrope
   return (
     <select
       onChange={handleChange}
-      className='bg-background text-sm'
+      className='min-w-24 bg-background text-sm'
       {...properties}
     >
       {options.map(({ children, ...properties }) => (
