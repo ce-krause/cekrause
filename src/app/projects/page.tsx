@@ -9,6 +9,8 @@ export const generateMetadata = async (): Promise<Metadata> => {
   }
 }
 
-const ProjectsPage = () => 'projects'
+const ProjectsPage = () => {
+  return 'projects'
+}
 
 export default ProjectsPage

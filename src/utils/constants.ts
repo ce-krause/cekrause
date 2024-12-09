@@ -1,10 +1,8 @@
-import { Locale, LocalizedString, SelectOption } from './types'
-
-export const PATHNAMES = ['/', '/career', '/contact', '/projects']
+import { Locale, LocalizedString, Pathname, SelectOption } from './types'
 
 export const NAVIGATION_BAR_LINKS: {
   children: LocalizedString
-  href: string
+  href: Pathname
 }[] = [
   {
     children: {

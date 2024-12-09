@@ -4,13 +4,13 @@ import { useLocale } from '@/hooks/intl'
 import { SelectOption } from '@/utils/types'
 import { ChangeEvent, useCallback } from 'react'
 
-type RootSelectProperties<T extends string> = {
+type SelectProperties<T extends string> = {
   options: SelectOption<T>[]
   value: string
   onChange: (value: T) => void
 }
 
-export const RootSelect = <T extends string>({ options, onChange, ...properties }: RootSelectProperties<T>) => {
+export const Select = <T extends string>({ options, onChange, ...properties }: SelectProperties<T>) => {
   const locale = useLocale()
 
   const handleChange = useCallback(

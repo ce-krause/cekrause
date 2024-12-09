@@ -3,13 +3,13 @@
 import { useLocale } from '@/hooks/intl'
 import { setLocale } from '@/services/intl'
 import { LOCALE_SELECT_OPTIONS } from '@/utils/constants'
-import { RootSelect } from './root'
+import { Select } from '.'
 
 export const LocaleSelect = () => {
   const locale = useLocale()
 
   return (
-    <RootSelect
+    <Select
       options={LOCALE_SELECT_OPTIONS}
       value={locale}
       onChange={setLocale}

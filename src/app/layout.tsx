@@ -1,4 +1,5 @@
 import { AnimatedContainer } from '@/components/animated-container'
+import { BaseLayout } from '@/components/layout/base'
 import { LocaleSelect } from '@/components/select/locale'
 import { ThemeSelect } from '@/components/select/theme'
 import { ThemeProvider } from '@/providers/theme'
@@ -36,7 +37,7 @@ const RootLayout = async ({ children }: RootLayoutProperties) => {
                 <ThemeSelect />
                 <LocaleSelect />
               </div>
-              {children}
+              <BaseLayout>{children}</BaseLayout>
             </AnimatedContainer>
           </ThemeProvider>
         </NextIntlClientProvider>

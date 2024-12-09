@@ -1,7 +1,9 @@
+import { notFound } from 'next/navigation'
 import { NextRequest, NextResponse } from 'next/server'
-import { localesSchema } from './utils/schemas'
+import { PATHNAMES_FLAG } from './utils/flags'
+import { localesSchema, pathnamesSchema } from './utils/schemas'
 
-export const middleware = (request: NextRequest) => {
+export const middleware = async (request: NextRequest) => {
   const cookie = request.cookies.get('LOCALE')
   const response = NextResponse.next()
 
@@ -11,6 +13,18 @@ export const middleware = (request: NextRequest) => {
     const parsed = localesSchema.safeParse(sliced)
 
     response.cookies.set('LOCALE', parsed.success ? parsed.data : 'en')
+  }
+
+  const parsed = pathnamesSchema.safeParse(request.nextUrl.pathname)
+
+  if (parsed.success) {
+    const flag = PATHNAMES_FLAG[parsed.data]
+
+    if (flag) {
+      const enabled = await flag()
+
+      if (!enabled) notFound()
+    }
   }
 
   return response

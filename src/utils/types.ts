@@ -1,6 +1,7 @@
 import { z } from 'zod'
-import { localesSchema } from './schemas'
+import { localesSchema, pathnamesSchema } from './schemas'
 
+export type Pathname = z.infer<typeof pathnamesSchema>
 export type Locale = z.infer<typeof localesSchema>
 
 export type LocalizedString = {
