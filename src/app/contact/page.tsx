@@ -9,6 +9,6 @@ export const generateMetadata = async (): Promise<Metadata> => {
   }
 }
 
-const Contact = () => 'contact'
+const ContactPage = () => 'contact'
 
-export default Contact
+export default ContactPage
